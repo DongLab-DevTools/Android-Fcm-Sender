@@ -1,72 +1,72 @@
 # Android-Fcm-Sender
 
-Android-Fcm-Sender는 Firebase Cloud Messaging(FCM) 테스트용 안드로이드 애플리케이션입니다.  
-서버 없이 앱 내에서 직접 FCM HTTP v1 API를 호출하여 푸시 메시지를 전송할 수 있습니다.  
-Firebase Console이나 별도의 서버 환경 없이, 로컬에서 푸시 메시지를 구성하고 테스트하는 데 유용합니다.
+Firebase Cloud Messaging(FCM) 테스트를 위한 안드로이드 애플리케이션입니다.  
+서버 없이 앱에서 직접 FCM HTTP v1 API를 호출하여 푸시 메시지를 전송하고 테스트할 수 있습니다.
 
+## 📌 개요
 
-## 기능 목적
+개발 및 QA 단계에서 푸시 알림 기능을 빠르게 검증할 수 있는 도구입니다.  
+Firebase Console이나 별도의 백엔드 서버 없이 로컬에서 푸시 메시지를 구성하고 전송할 수 있습니다.
 
-- 서버 없이 푸시 메시지를 전송할 수 있는 테스트 도구
-- Notification 및 Data 필드를 자유롭게 구성하여 FCM 수신 테스트 가능
-- 개발 및 QA 단계에서 푸시 수신 로직 검증에 활용
-- 실제 FCM 전송 형식을 그대로 사용하여 실환경과 동일한 동작 테스트 가능
+## ✨ 주요 기능
 
+- **서비스 계정 키 관리** - Firebase Service Account JSON 파일 업로드
+- **Notification 필드 구성** - title, body, image, channelId 등 설정
+- **Data 필드 구성** - 커스텀 key-value 데이터 추가
+- **우선순위 설정** - high/normal 메시지 우선순위 지정
+- **실시간 전송 테스트** - FCM API 직접 호출 및 응답 확인
+- **UI 기반 조작** - 코드 수정 없이 앱에서 간편하게 테스트
 
-## 주요 기능
+## 🚀 사용 방법
 
-| 분류 | 설명 |
-|------|------|
-| **서비스 계정 키 관리** | Firebase Service Account JSON 파일 업로드 및 로드 지원 |
-| **Notification 필드 구성** | title, body, image, channelId 등 알림 필드를 직접 입력 |
-| **Data 필드 구성** | 임의의 key-value 데이터 추가 가능 |
-| **푸시 우선순위 설정** | high, normal 등 메시지 우선순위 지정 |
-| **FCM API 호출** | `https://fcm.googleapis.com/v1/projects/{projectId}/messages:send` 엔드포인트 직접 호출 |
-| **응답 로그 출력** | 요청 결과 및 HTTP 응답 코드 표시 |
-| **UI 기반 조작** | 코드 수정 없이 앱 UI에서 입력 후 버튼 클릭만으로 테스트 가능 |
+1. Firebase Console에서 서비스 계정 비공개 키(JSON) 다운로드  
+   `프로젝트 설정 → 서비스 계정 → 새 비공개 키 생성`
 
+2. 앱 실행 후 JSON 파일 업로드
 
-## 추가 예정 기능
+3. 수신 디바이스 토큰 및 메시지 내용 입력
 
-| 기능 | 설명 |
-|------|------|
-| **최근 전송 이력 저장** | 이전에 전송한 메시지(payload, 토큰, 설정 등)를 로컬에 저장하고 재전송 가능하도록 구현 |
-| **전송 결과 로그 뷰어** | HTTP 응답뿐 아니라 실제 수신 디바이스 로그(수신 성공/실패)까지 표시 |
-| **전송 템플릿 관리** | 자주 사용하는 메시지 구조를 템플릿으로 저장/불러오기 지원 |
-| **Payload 미리보기 (JSON Formatter)** | 입력된 데이터 구조를 보기 좋게 포맷팅하여 전송 전 검증 가능 |
-| **Dark / Light 모드 지원** | 테스트 환경 및 개발자 선호에 맞춰 테마 전환 지원 |
+4. 전송 버튼 클릭 후 결과 확인
 
-
-## 기술 명세
+## 🛠 기술 스택
 
 | 항목 | 내용 |
 |------|------|
-| 플랫폼 | Android |
-| 언어 | Kotlin |
-| API | Firebase Cloud Messaging HTTP v1 |
-| 인증 | Google Service Account OAuth2 (JWT) |
-| 최소 SDK | 24 |
-| 필요한 권한 | INTERNET |
-| 주요 라이브러리 | Retrofit2, Gson, OkHttp |
+| **언어** | Kotlin |
+| **플랫폼** | Android (minSdk 24) |
+| **API** | Firebase Cloud Messaging HTTP v1 |
+| **인증** | Google Service Account OAuth2 (JWT) |
+| **라이브러리** | Retrofit2, Gson, OkHttp |
 
+## 📱 스크린샷
 
-## 사용 방법
+<table>
+  <tr>
+    <td align="center"><b>메인 화면</b></td>
+    <td align="center"><b>JSON 미업로드</b></td>
+    <td align="center"><b>속성 설정</b></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/164afd0c-24d8-4844-b578-472b9e864d4f" width="240"></td>
+    <td><img src="https://github.com/user-attachments/assets/26c3e82c-7c24-43e5-af59-c08e98d37ef3" width="240"></td>
+    <td><img src="https://github.com/user-attachments/assets/872da42c-231d-4512-b277-e2ccff9fb7e2" width="240"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Notification 전송</b></td>
+    <td align="center"><b>Data 전송</b></td>
+    <td align="center"><b>데이터 삭제</b></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/735ea9e4-8323-4938-9c5a-081711ea270e" width="240"></td>
+    <td><img src="https://github.com/user-attachments/assets/23963942-7706-4584-b4d7-40589d1c4da9" width="240"></td>
+    <td><img src="https://github.com/user-attachments/assets/e738fbde-8d34-425e-9f72-4ffeb551911a" width="240"></td>
+  </tr>
+</table>
 
-1. Firebase Console에서 서비스 계정 비공개 키(JSON) 파일을 다운로드  
-   (경로: 프로젝트 설정 → 서비스 계정 → 새 비공개 키 생성)
-2. 앱 실행 후 JSON 파일 업로드
-3. Notification 또는 Data 필드 입력
-4. 전송 버튼 클릭 후 결과 확인
+## 🔜 예정된 기능
 
-> 실제 디바이스 토큰을 입력하면 해당 기기에 바로 푸시를 전송할 수 있습니다.
-
-
-## 스크린샷
-
-| 메인 화면 | JSON 파일 미업로드 시 | Notification 속성 설정 |
-|:--:|:--:|:--:|
-| <p align="center"><img src="https://github.com/user-attachments/assets/164afd0c-24d8-4844-b578-472b9e864d4f" width="280" style="object-fit:contain;"></p> | <p align="center"><img src="https://github.com/user-attachments/assets/26c3e82c-7c24-43e5-af59-c08e98d37ef3" width="280" style="object-fit:contain;"></p> | <p align="center"><img src="https://github.com/user-attachments/assets/872da42c-231d-4512-b277-e2ccff9fb7e2" width="280" style="object-fit:contain;"></p> |
-
-| 푸시 전송 (Notification 필드 포함) | 푸시 전송 (Data 필드만 포함) | 푸시 데이터 삭제 |
-|:--:|:--:|:--:|
-| <p align="center"><img src="https://github.com/user-attachments/assets/735ea9e4-8323-4938-9c5a-081711ea270e" width="280" style="object-fit:contain;"></p> | <p align="center"><img src="https://github.com/user-attachments/assets/23963942-7706-4584-b4d7-40589d1c4da9" width="280" style="object-fit:contain;"></p> | <p align="center"><img src="https://github.com/user-attachments/assets/e738fbde-8d34-425e-9f72-4ffeb551911a" width="280" style="object-fit:contain;"></p> |
+- **전송 이력 관리** - 이전 메시지 저장 및 재전송
+- **로그 뷰어** - 수신 성공/실패 로그 확인
+- **템플릿 시스템** - 자주 사용하는 메시지 구조 저장
+- **Payload 미리보기** - JSON 포맷팅 및 전송 전 검증
+- **테마 지원** - Dark/Light 모드 전환
