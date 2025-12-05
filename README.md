@@ -1,50 +1,21 @@
 # Android-Fcm-Sender
 
-Firebase Cloud Messaging(FCM) 테스트를 위한 안드로이드 애플리케이션입니다.  
-서버 없이 앱에서 직접 FCM HTTP v1 API를 호출하여 푸시 메시지를 전송하고 테스트할 수 있습니다.
+[![Hits](https://myhits.vercel.app/api/hit/https%3A%2F%2Fgithub.com%2FDongLab-DevTools%2FAndroid-Fcm-Sender%3Ftab%3Dreadme-ov-file?color=blue&label=hits&size=small)](https://myhits.vercel.app)
+[![Platform](https://img.shields.io/badge/platform-Android-3DDC84?style=flat-square&logo=android)](https://developer.android.com)
+[![Min SDK](https://img.shields.io/badge/min%20sdk-24-green?style=flat-square)](https://developer.android.com)
+[![Jitpack](https://jitpack.io/v/DongLab-DevTools/Android-Fcm-Sender.svg)](https://jitpack.io/#DongLab-DevTools/Android-Fcm-Sender)
 
-## 📌 개요
+**[한국어 README](./README_ko.md)**
 
-개발 및 QA 단계에서 푸시 알림 기능을 빠르게 검증할 수 있는 도구입니다.  
-Firebase Console이나 별도의 백엔드 서버 없이 로컬에서 푸시 메시지를 구성하고 전송할 수 있습니다.
+## Overview
 
-## ✨ 주요 기능
-
-- **서비스 계정 키 관리** - Firebase Service Account JSON 파일 업로드
-- **Notification 필드 구성** - title, body, image, channelId 등 설정
-- **Data 필드 구성** - 커스텀 key-value 데이터 추가
-- **우선순위 설정** - high/normal 메시지 우선순위 지정
-- **실시간 전송 테스트** - FCM API 직접 호출 및 응답 확인
-- **UI 기반 조작** - 코드 수정 없이 앱에서 간편하게 테스트
-
-## 🚀 사용 방법
-
-1. Firebase Console에서 서비스 계정 비공개 키(JSON) 다운로드  
-   `프로젝트 설정 → 서비스 계정 → 새 비공개 키 생성`
-
-2. 앱 실행 후 JSON 파일 업로드
-
-3. 수신 디바이스 토큰 및 메시지 내용 입력
-
-4. 전송 버튼 클릭 후 결과 확인
-
-## 🛠 기술 스택
-
-| 항목 | 내용 |
-|------|------|
-| **언어** | Kotlin |
-| **플랫폼** | Android (minSdk 24) |
-| **API** | Firebase Cloud Messaging HTTP v1 |
-| **인증** | Google Service Account OAuth2 (JWT) |
-| **라이브러리** | Retrofit2, Gson, OkHttp |
-
-## 📱 스크린샷
+Android-Fcm-Sender is a testing library for Firebase Cloud Messaging (FCM) that provides a ready-to-use Activity for sending push notifications directly from your Android device without needing a backend server.
 
 <table>
   <tr>
-    <td align="center"><b>메인 화면</b></td>
-    <td align="center"><b>JSON 미업로드</b></td>
-    <td align="center"><b>속성 설정</b></td>
+    <td align="center"><b>Main Screen</b></td>
+    <td align="center"><b>No JSON Uploaded</b></td>
+    <td align="center"><b>Property Settings</b></td>
   </tr>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/164afd0c-24d8-4844-b578-472b9e864d4f" width="240"></td>
@@ -52,9 +23,9 @@ Firebase Console이나 별도의 백엔드 서버 없이 로컬에서 푸시 메
     <td><img src="https://github.com/user-attachments/assets/872da42c-231d-4512-b277-e2ccff9fb7e2" width="240"></td>
   </tr>
   <tr>
-    <td align="center"><b>Notification 전송</b></td>
-    <td align="center"><b>Data 전송</b></td>
-    <td align="center"><b>데이터 삭제</b></td>
+    <td align="center"><b>Notification Send</b></td>
+    <td align="center"><b>Data Send</b></td>
+    <td align="center"><b>Delete Data</b></td>
   </tr>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/735ea9e4-8323-4938-9c5a-081711ea270e" width="240"></td>
@@ -63,10 +34,129 @@ Firebase Console이나 별도의 백엔드 서버 없이 로컬에서 푸시 메
   </tr>
 </table>
 
-## 🔜 예정된 기능
+<br>
+<br>
 
-- **전송 이력 관리** - 이전 메시지 저장 및 재전송
-- **로그 뷰어** - 수신 성공/실패 로그 확인
-- **템플릿 시스템** - 자주 사용하는 메시지 구조 저장
-- **Payload 미리보기** - JSON 포맷팅 및 전송 전 검증
-- **테마 지원** - Dark/Light 모드 전환
+This library enables quick verification of push notification functionality during development and QA stages. Simply add it to your project and launch the provided Activity to compose and send push messages locally using the FCM HTTP v1 API without needing the Firebase Console or a separate backend server.
+
+<br>
+
+## Features
+
+- **Service Account Key Management**: Upload and manage Firebase Service Account JSON files
+- **Notification Field Configuration**: Configure title, body, image, channelId, and other notification properties
+- **Data Field Configuration**: Add custom key-value data payloads
+- **Priority Settings**: Specify message priority (high/normal) for delivery
+- **Real-time Transmission Testing**: Direct FCM API calls with response verification
+- **UI-based Operation**: Easy testing with a pre-built Activity interface
+
+<br>
+
+## Installation
+
+### Step 1: Add Jitpack repository
+
+Add the Jitpack repository to your project's `settings.gradle.kts`:
+
+```kotlin
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+    }
+}
+```
+
+### Step 2: Add dependency
+
+Add the library to your module's `build.gradle.kts`:
+
+```kotlin
+dependencies {
+    implementation("com.github.DongLab-DevTools:Android-Fcm-Sender:latestVersion")
+}
+```
+
+<br>
+
+### Requirements
+
+- Android API 24 (Android 7.0) or higher
+- Firebase project with Cloud Messaging enabled
+- Firebase Service Account JSON key file
+
+<br>
+
+## Usage
+
+### Launch FCM Sender Activity
+
+Simply launch the FCM Sender Activity from anywhere in your app:
+
+```kotlin
+import android.content.Intent
+import com.your.package.FcmSenderActivity
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // Launch FCM Sender Activity
+        findViewById<Button>(R.id.openFcmSender).setOnClickListener {
+            val intent = Intent(this, FcmSenderActivity::class.java)
+            startActivity(intent)
+        }
+    }
+}
+```
+
+### Using the FCM Sender Screen
+
+1. **Obtain Firebase Service Account Key**
+   - Go to [Firebase Console](https://console.firebase.google.com/)
+   - Select your project
+   - Navigate to **Project Settings → Service Accounts**
+   - Click **Generate New Private Key** and download the JSON file
+
+2. **Upload JSON File**
+   - Tap the upload button in the FCM Sender Activity
+   - Select your Service Account JSON file
+   - The app will parse and store the credentials
+
+3. **Configure Message**
+   - **Device Token**: Enter the FCM registration token of the target device
+   - **Title**: Notification title
+   - **Body**: Notification message body
+   - **Image URL**: (Optional) Image URL for rich notifications
+   - **Channel ID**: Android notification channel ID
+   - **Priority**: Select HIGH or NORMAL
+
+4. **Send Message**
+   - Tap the **Send** button to transmit via FCM HTTP v1 API
+   - View the response status and any errors
+
+<br>
+
+## Tech Stack
+
+| Category | Details |
+|----------|---------|
+| **Language** | Kotlin |
+| **Platform** | Android (minSdk 24) |
+| **API** | Firebase Cloud Messaging HTTP v1 |
+| **Authentication** | Google Service Account OAuth2 (JWT) |
+| **Libraries** | Retrofit2, Gson, OkHttp |
+
+<br>
+
+## Upcoming Features
+
+- **Message History**: Save and resend previous messages
+- **Log Viewer**: View success/failure logs for sent messages
+- **Template System**: Save frequently used message structures
+- **Payload Preview**: JSON formatting and pre-send validation
+- **Theme Support**: Dark/Light mode toggle
+
+<br>
